@@ -1,0 +1,185 @@
+/* General Styles */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #121212; /* Dark background for the entire page */
+    overflow: hidden;
+}
+
+/* Container for the booking page */
+#booking-container {
+    position: relative;
+    width: 90%;
+    max-width: 800px;
+    height: 600px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent black for the booking box */
+    border-radius: 20px;
+    padding: 30px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6); /* Subtle shadow for depth */
+    z-index: 1; /* Ensure it's above the background image */
+}
+
+/* Background image (movie poster) */
+.movie-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    overflow: hidden;
+}
+
+.movie-background img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensures the image covers the entire background */
+    opacity: 0.4; /* Slight transparency for the background */
+    filter: blur(8px); /* Blurs the background image */
+}
+
+/* Title and Description */
+#booking-title {
+    font-size: 2.5em;
+    color: #ffffff;
+    margin-bottom: 10px;
+    text-align: center;
+    font-weight: bold;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Subtle text shadow for readability */
+}
+
+#booking-description {
+    font-size: 1.2em;
+    margin-bottom: 40px;
+    color: #bdbdbd; /* Light grey for description */
+    text-align: center;
+}
+
+/* Seats Grid */
+.seats-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr); /* 7 columns */
+    gap: 12px; /* Space between seats */
+    margin-bottom: 30px;
+    max-width: 100%; /* Ensures the grid doesn't overflow its container */
+}
+
+/* Seat Styling */
+.seat {
+    width: 50px;
+    height: 50px;
+    background-color: #44c767; /* Green color for seats */
+    color: white;
+    font-weight: bold;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 255, 0, 0.7); /* Neon-like glow effect */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s; /* Smooth transition for hover effects */
+    cursor: pointer;
+}
+
+.seat:hover {
+    background-color: #2ecc71; /* Darker green on hover */
+    transform: scale(1.1); /* Slightly enlarges the seat on hover */
+    box-shadow: 0 0 15px rgba(0, 255, 0, 0.9); /* Intensified glow on hover */
+}
+
+.seat.selected {
+    background-color: red;
+    color: white;
+    box-shadow: 0 0 15px rgba(255, 0, 0, 0.7); /* Red glow for selected seats */
+}
+.seat.disabled {
+    background-color: #ccc; /* Gray color for disabled seats */
+    cursor: not-allowed; /* Show "not allowed" cursor */
+    pointer-events: none; /* Make them unclickable */
+}
+
+/* Modal Styling */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8); /* Black with transparency */
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 15px;
+    text-align: center;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3); /* Modal shadow for depth */
+}
+
+#submit-ticket-count {
+    background-color: #44c767;
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    font-size: 1.2em;
+    cursor: pointer;
+    border-radius: 10px;
+    margin-top: 20px;
+    transition: background-color 0.3s ease, transform 0.3s; /* Smooth transition for button */
+}
+
+#submit-ticket-count:hover {
+    background-color: #2ecc71; /* Darker green on hover */
+    transform: scale(1.05); /* Slight enlargement on hover */
+}
+
+/* Book Now Button */
+#book-now-btn {
+    background-color: #ff5733; /* Orange button color */
+    color: white;
+    border: none;
+    padding: 15px 30px;
+    font-size: 1.3em;
+    cursor: pointer;
+    border-radius: 12px;
+    transition: background-color 0.3s ease, transform 0.3s; /* Smooth transition for hover effects */
+    margin-bottom: 20px;
+}
+
+#book-now-btn:hover {
+    background-color: #e04c2d; /* Darker orange on hover */
+    transform: scale(1.05); /* Slightly enlarges the button on hover */
+}
+
+/* Confirm and Go Back Buttons */
+#btn {
+    display: flex;
+    gap: 10px;
+}
+
+#confirm-btn, #go-back-btn {
+    background-color: #ff5733; /* Orange button color */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1.2em;
+    cursor: pointer;
+    border-radius: 10px;
+    transition: background-color 0.3s ease, transform 0.3s; /* Smooth color and scale transitions */
+}
+
+#confirm-btn:hover, #go-back-btn:hover {
+    background-color: #e04c2d; /* Darker orange on hover */
+    transform: scale(1.05); /* Slightly enlarges the buttons on hover */
+}

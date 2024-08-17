@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seat Booking</title>
+    <link rel="stylesheet" href="style2.css"> <!-- Link your CSS file -->
+</head>
+<body>
+
+    <div id="booking-container">
+        <!-- Background image (movie poster) with transparency -->
+        <div class="movie-background">
+            <img id="booking-image" alt="Movie Image" />
+        </div>
+        
+        <!-- Seat booking area -->
+        <div id="seating-container">
+            <h2 id="booking-title"></h2>
+            <p id="booking-description"></p>
+            
+            <!-- Seats grid (seats will be dynamically generated after user input) -->
+            <div class="seats-grid"></div>
+            
+            <!-- Confirmation buttons -->
+            <div id="btn">
+                <button id="confirm-btn" style="display:none;">Confirm</button>
+                <button id="go-back-btn" onclick="goBack()">Go Back</button>
+            </div>            
+        </div>
+    </div>
+
+    <!-- Ticket Modal -->
+    <div id="ticket-modal" class="modal">
+        <div class="modal-content">
+            <h3>How many tickets would you like to book?</h3>
+            <input type="dropdown" id="ticket-count" min="1" max="35" placeholder="Enter number of tickets">
+            <button id="submit-ticket-count">Submit</button>
+        </div>
+    </div>
+
+    <script>
+        // Global variables to hold ticket count
+        let ticketCount = 0;
+        let val, val2;
+
+        // Load booking details from localStorage (title, description, image)
+        function loadBookingDetails() {
+            const title = localStorage.getItem('MovieTitle');
+            const description = localStorage.getItem('MovieDescription');
+            const image = localStorage.getItem('MovieImage');
+
+            document.getElementById("booking-title").textContent = title;
+            document.getElementById("booking-description").textContent = description;
+            document.getElementById("booking-image").src = image;
+            document.getElementById("booking-image").alt = title;
+
+            // Open ticket modal as soon as page loads
+            showTicketModal();
+        }
+
+     
+        function showTicketModal() {
+            document.getElementById('ticket-modal').style.display = 'flex';
+        }
+
+      
+        function hideTicketModal() {
+            document.getElementById('ticket-modal').style.display = 'none';
+        }
+
+        
+        function generateSeats(ticketCount) {
+            const seatsGrid = document.querySelector('.seats-grid');
+            seatsGrid.innerHTML = ''; 
+            for (let i = 0; i < 50; i++) {
+                const seat = document.createElement('div');
+                seat.classList.add('seat');
+                seat.textContent = i + 1;
+               
+                
+                
+                seatsGrid.appendChild(seat);
+            }
+
+            // Enable seat selection up to the ticketCount
+            const seats = document.querySelectorAll('.seat');
+            seats.forEach(seat => {
+                seat.addEventListener('click', function () {
+                    removeSelection(seats);
+                    let current = seat;
+                    current.classList.toggle('selected');
+                    let remainingTickets = val;
+
+                    while (remainingTickets > 1) {
+                        if (current.nextElementSibling) {
+                            current.nextElementSibling.classList.toggle('selected');
+                            current = current.nextElementSibling;
+                        }
+                        remainingTickets--;
+                    }
+                    val = val2; 
+                });
+            });
+        }
+
+       
+        function removeSelection(seats) {
+            seats.forEach(seat => seat.classList.remove('selected'));
+        }
+
+        
+        document.getElementById('submit-ticket-count').addEventListener('click', function () {
+            ticketCount = parseInt(document.getElementById('ticket-count').value);
+            if (ticketCount > 0 && ticketCount <= 35) {
+                val = ticketCount; 
+                val2 = ticketCount;
+                hideTicketModal();
+                generateSeats(ticketCount); // Generate the appropriate number of seats
+                document.getElementById('confirm-btn').style.display = 'inline-block'; // Show confirm button
+            } else {
+                alert('Please enter a valid number of tickets (1-35).');
+            }
+        });
+
+        
+        function goBack() {
+            window.history.back();
+        }
+
+        window.onload = loadBookingDetails; 
+    </script>
+</body>
+</html>

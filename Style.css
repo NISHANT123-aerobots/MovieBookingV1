@@ -1,0 +1,161 @@
+/* General Styles */
+body {
+    background-color: #121212;
+    color: #ffffff;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #1f1f1f;
+    padding: 20px;
+    text-align: center;
+}
+
+/* Navigation Styles */
+nav {
+    background-color: #222;
+    padding: 10px 0;
+}
+
+nav ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+nav ul li {
+    margin: 0 15px;
+    display: flex;
+    align-items: center;
+}
+
+nav ul li::before {
+    content: '•';
+    color: #9370DB; /* Light purple color */
+    margin-right: 15px;
+    font-size: 20px; /* Adjust size as needed */
+}
+
+nav ul li:first-child::before {
+    content: none; /* Remove bullet before the first item */
+}
+
+nav ul li a {
+    color: #9370DB; /* Light purple color */
+    text-decoration: none;
+    font-size: 16px;
+    transition: color 0.3s ease;
+}
+
+nav ul li a:hover {
+    color: #FFF;
+}
+
+/* Login button style */
+nav ul li:last-child a {
+    color: #007bff; /* Blue color for Login */
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    nav ul {
+        flex-direction: column;
+    }
+    
+    nav ul li {
+        margin: 10px 0;
+    }
+}
+
+h1 {
+    text-align: center;
+    margin: 20px 0;
+}
+
+/* Movie Container Styles */
+#movies-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    padding: 20px;
+}
+
+.movie-card {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    padding: 15px;
+    text-align: center;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    transition: transform 0.3s, box-shadow 0.3s;
+    width: 250px;
+}
+
+.movie-card img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+}
+
+.movie-card h3 {
+    margin: 10px 0;
+    font-size: 18px;
+}
+
+.movie-card p {
+    font-size: 14px;
+    color: #cccccc;
+}
+
+.movie-card button {
+    margin-top: 10px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #ff6347;
+    color: #ffffff;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.movie-card button:hover {
+    background-color: #ff4500;
+}
+
+.movie-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+    .movie-card {
+        width: 220px;
+    }
+}
+
+@media (max-width: 768px) {
+    #movies-container {
+        padding: 10px;
+    }
+    .movie-card {
+        width: 200px;
+    }
+}
+
+@media (max-width: 480px) {
+    #movies-container {
+        padding: 5px;
+    }
+    .movie-card {
+        width: 180px;
+    }
+}

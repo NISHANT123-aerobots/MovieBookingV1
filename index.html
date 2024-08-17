@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="Style.css">
+    <title>Book My Movie</title>
+</head>
+<body>
+    <header>
+        <nav>
+
+            <ul class="nav-links">
+                <li><a href="#" onclick="Movie(event)">Home</a></li>
+                <li><a href="#" onclick="Movie(event)">Romantic</a></li>
+                <li><a href="#" onclick="Movie(event)">Action</a></li>
+                <li><a href="#" onclick="Movie(event)">Anime</a></li>
+                <li><a href="#" onclick="Movie(event)">Login</a></li>
+            </ul>
+        </nav>
+      
+    </header>
+    <main>
+        <h1>Welcome to the Movie Bizz</h1>
+        <div id="movies-container">
+            <!-- Movie cards will be displayed here -->
+        </div>
+        <div id="booking-container" style="display:none;">
+            <h2 id="booking-title"></h2>
+            <p id="booking-description"></p>
+            <!-- Add more booking details here -->
+            <button onclick="goBack()">Go Back</button>
+        </div>
+    </main>
+
+    <!-- Scripts -->
+    <script src="Script.js"></script>
+</body>
+</html>
